@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 3.7%, 15.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+
+  /* Custom Telegram colors */
+  --telegram-blue: hsl(202, 100%, 40%);
+  --telegram-blue-light: hsl(202, 100%, 60%);
+  --dark-bg: hsl(0, 0%, 7%);
+  --dark-surface: hsl(0, 0%, 12%);
+  --dark-elevated: hsl(0, 0%, 17%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 3.7%, 15.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background-color: var(--dark-bg);
+    color: var(--foreground);
+  }
+}
+
+@layer components {
+  .nav-tab {
+    @apply transition-colors duration-200;
+  }
+
+  .nav-tab.active {
+    @apply text-white;
+    background-color: var(--telegram-blue);
+  }
+
+  .nav-tab:not(.active) {
+    @apply text-gray-400;
+  }
+
+  .nav-tab:not(.active):hover {
+    background-color: var(--dark-elevated);
+  }
+
+  .roulette-spin {
+    animation: roulette-spin 3s cubic-bezier(0.23, 1, 0.320, 1) forwards;
+  }
+
+  @keyframes roulette-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(1800deg);
+    }
+  }
+
+  .pulse-live {
+    animation: pulse-live 2s infinite;
+  }
+
+  @keyframes pulse-live {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  }
+
+  .gradient-blue {
+    background: linear-gradient(135deg, #4A90E2 0%, #6B46C1 100%);
+  }
+
+  .gradient-green {
+    background: linear-gradient(135deg, #4ADE80 0%, #3B82F6 100%);
+  }
+
+  .gradient-red {
+    background: linear-gradient(135deg, #EF4444 0%, #EC4899 100%);
+  }
+
+  .gradient-orange {
+    background: linear-gradient(135deg, #F97316 0%, #EF4444 100%);
+  }
+
+  .gradient-purple {
+    background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+  }
+
+  .telegram-button {
+    background-color: var(--telegram-blue);
+    transition: background-color 0.2s ease;
+  }
+
+  .telegram-button:hover {
+    background-color: var(--telegram-blue-light);
+  }
+
+  .dark-surface {
+    background-color: var(--dark-surface);
+  }
+
+  .dark-elevated {
+    background-color: var(--dark-elevated);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--telegram-blue);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--telegram-blue-light);
+}

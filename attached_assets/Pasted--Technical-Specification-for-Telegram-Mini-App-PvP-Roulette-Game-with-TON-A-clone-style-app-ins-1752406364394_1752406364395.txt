@@ -1,0 +1,145 @@
+📄 Technical Specification for Telegram Mini-App (PvP Roulette Game with TON)
+
+A clone-style app inspired by Rolls Game, with custom name and professional design
+
+⸻
+
+⚙️ GENERAL
+	•	Telegram Mini-App using Telegram WebApp SDK
+	•	Integrated with TON (The Open Network) and Telegram Wallet
+	•	Mobile-first responsive design
+	•	Bottom navigation bar with 5 sections: PvP, Rolls, My Gifts, Shop, Earn
+
+⸻
+
+❤️ TAB: PvP
+
+🎮 Functionality:
+	•	Join live games by submitting gift items (NFTs with TON value)
+	•	Each player contributes one or more gifts
+	•	Winning chance is proportional to TON value contributed
+	•	All gifts form a prize pool, and one player wins the full pool
+	•	System deducts a platform fee before payout
+
+📋 UI Elements:
+	•	Spinning wheel with colored segments per player
+	•	Countdown timer in the center
+	•	Add gift button (+ Add gift)
+	•	Display of X gifts | Y TON
+	•	Side boxes showing recent winners and top wins
+	•	Game integrity hash shown (provably fair)
+	•	Player list below the wheel showing:
+	•	Username
+	•	Avatar
+	•	Win chance in %
+	•	Gift value (TON)
+	•	Gift icons used
+
+⸻
+
+🎲 TAB: Rolls
+
+🎮 Functionality:
+	•	Single or multi-roll feature (gacha-style)
+	•	Each roll has a fixed cost (e.g., 0.5 TON)
+	•	Results in winning random gifts or boosts
+	•	Rolling animation with visual feedback
+	•	Global “Live Wins” section showing other players’ results
+
+📋 UI Elements:
+	•	Static spinning wheel with prize slots (icons and images)
+	•	Roll cost indicator: 1 Roll | X TON
+	•	Quantity slider and quick buttons: +1, +5, +10, max
+	•	Balance display in top right
+	•	Error message for insufficient balance: Not enough balance
+
+⸻
+
+🎁 TAB: My Gifts
+
+🎮 Functionality:
+	•	Displays user-owned gifts/NFTs
+	•	Option to withdraw gifts or transfer externally
+	•	Integration with external bot for importing NFTs
+
+📋 UI Elements:
+	•	Empty state message: There’s no gifts yet
+	•	Instruction: Want to add your NFT gift? Send it to @rolls_transfer
+	•	Withdraw button (disabled when inventory is empty)
+
+⸻
+
+🛍️ TAB: Shop (GiftShop)
+
+🎮 Functionality:
+	•	In-game marketplace to buy gifts with TON
+	•	Each gift has a fixed price (commonly 3.5 TON)
+	•	Wide variety of visual items, some with rarity or skins
+	•	Filtering system for item browsing
+
+📋 UI Elements:
+	•	Grid layout of items (name, image, price, item ID)
+	•	Filters:
+	•	Type – item category
+	•	Skin – visual skin
+	•	BG – background color
+	•	Sort button with ascending/descending toggle
+	•	“Info” (i) buttons to view details of each item
+
+⸻
+
+💵 TAB: Earn
+
+🎮 Functionality:
+	1.	Task System
+	•	Players complete tasks to earn free rolls
+	•	Button: Open tasks
+	2.	Referral System
+	•	Earn 10% of fees from referred users
+	•	Displays:
+	•	Number of invited users
+	•	Total earned (TON)
+	•	Button: Invite frens (with shareable link)
+	3.	Staking Rewards
+	•	33% APR for holding gifts in inventory
+	•	Rewards distributed based on total value of owned gifts
+	•	Leaderboard with ranking
+
+📋 UI Elements:
+	•	Wallet balance and address shown
+	•	Earnings and value of staked items displayed
+	•	Button: Open leaderboard
+
+⸻
+
+📌 GLOBAL MECHANICS & TECH REQUIREMENTS
+
+🧠 Game Logic:
+	•	Probabilistic roulette with weighted chances
+	•	Backend determines results, not client-side
+	•	“Provably fair” hash generated before each match
+
+🪙 In-Game Economy:
+	•	TON used as main currency
+	•	Gifts/NFTs have defined TON values
+	•	Platform commission on PvP rounds
+
+🧾 Gift Structure:
+	•	Each gift has:
+	•	Unique ID
+	•	Icon/image
+	•	Name
+	•	TON value
+	•	Type / Skin / Background
+	•	Gifts used across PvP, Shop, and Rolls
+
+🔐 Suggested Backend:
+	•	REST API for game state, players, items, history
+	•	WebSocket or long polling for live roulette updates
+	•	Optional smart contract for rewards and staking (on TON)
+
+🎨 UI Design:
+	•	Dark theme with minimalistic, Telegram-native style
+	•	Rounded avatars and icons
+	•	Live animations on spins and rewards
+	•	Emphasis on smooth, clean mobile UX
